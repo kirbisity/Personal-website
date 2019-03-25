@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html>
+<link rel='stylesheet' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<head>
+    <meta content='text/html;charset=utf-8' http-equiv='Content-Type'>
+    <meta content='utf-8' http-equiv='encoding'>
+    <title>Smart room lighting</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lato:300');
+
+        body {
+            font-family: "Lato";
+            font-size: 9pt;
+            -webkit-user-select: none;
+            -moz-user-select: -moz-none;
+            -ms-user-select: none;
+            user-select: none;
+            margin: 0;
+            height: 100%;
+            overflow: hidden;
+            font-size: 13px;
+            font-weight: bold;
+            color:#fefefe;
+        }
+
+        #background{
+            position:absolute;
+            background: #7f7f7f;
+            left:0px;
+            top:0px;
+            z-index: 1;
+        }
+
+        #canvas1{
+            position:absolute;
+            left:0px;
+            top:0px;
+            z-index: 2;
+        }
+
+        .button{
+            z-index: 3;
+        }
+
+        #topMenu {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #999;
+            background-color:#555;
+            position: absolute;
+            width: 100%;
+            height: 70px;
+            top: 0px;
+            left:0px;
+            z-index: 6;
+        }
+
+        #topMenu h1 {
+            color: #f3f3f3;
+            font-size: 16pt;
+        }
+
+        #hcov {
+            position: absolute;
+            left: 100px;
+        }
+
+        #hcovtwo {
+            position: absolute;
+            left: 350px;
+        }
+
+        #hcovfull {
+            position: absolute;
+            left: 600px;
+        }
+
+        #leftMenu {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #999;
+            background: #ccc;
+            position: absolute;
+            width: 68px;
+            height: 100%;
+            top: 0px;
+            left:69px;
+            z-index: 5;
+        }
+
+        #inputbox {
+            border-style: solid;
+            border-width: 1px;
+            border-color: #999;
+            padding: 3px;
+            background: #555;
+            position: absolute;
+            width: 68px;
+            height: 100%;
+            top: 70px;
+            left:0px;
+            z-index: 5;
+        }
+
+        .button.menu1 {
+            color: #FFF;
+            background: #7f7f7f;
+            border-radius: 3px;
+            border: 3px;
+            box-shadow: 0px 0px 0px 3px rgba(50,50,50,0.75);
+            width: 50px;
+            height: 50px;
+            font-size: 10px;
+            font-family: Lato;
+            font-weight: bold;
+            position: relative;
+            -webkit-transition-duration: 0.2s;
+            transition-duration: 0.2s;
+            z-index: 8;
+            top: 80px;
+            left: 10px;
+            margin-top: 10px;
+        }
+        .button.menu1:hover {
+            background: #666;
+            -webkit-transition-duration: 0.2s;
+            transition-duration: 0.2s;
+            background-position: center;
+            background-attachment: relative;
+            background-repeat: no-repeat;
+            background-size: 80% 80%;
+            left: 12px;
+        }
+
+        .button.menu1:focus {
+            outline:0;
+        }
+
+        #help {
+            top: 0px;
+            left: 10px;
+            border-radius: 50%;
+            box-shadow: 0px 0px 0px 3px rgba(250,250,250,0.75);
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            padding-top: 100px; /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            z-index: 11;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            text-align: left;
+            position: relative;
+            background: linear-gradient(#eee, #ccc);
+            font-size: 20px;
+            font-weight:bold;
+            color: #444;
+            letter-spacing: 1px;
+            margin: auto;
+            padding: 20px;
+            border: 5px solid #888;
+            border-radius: 5px;
+            width: 60%;
+        }
+
+        .closehelp {
+            top:0px;
+            color: #761c19;
+            float: right;
+            font-size: calc(55px);
+            font-weight: bold;
+        }
+
+        .closehelp:hover,
+        .closehelp:focus {
+            color: #ff0000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        #sampleB{
+            width: 40px;
+            height: 40px;
+            position: relative;
+            top:0px;
+        }
+
+        .input1{
+            padding: 1px;
+            font-size: 14px;
+        }
+
+        .input1, textarea{
+            color: #454545;
+            padding: 1px;
+            font-size: 14px;
+        }
+
+        #ippi{
+            left: 5px;
+            top: 20px
+        }
+        #bapy{
+            left: 5px;
+            top: 5px;
+            position:relative;
+            background-color: #e57272;
+            font-size: 14px;
+        }
+        #bapy:hover{
+            left: 5px;
+            top: 5px;
+            position:relative;
+            background-color:#b75959;
+            font-size: 14px;
+        }
+
+    </style>
+    <script>
+
+    </script>
+</head>
+
+<body onload="start()"; onresize="draw()">
+<div>
+
+    <div id='canvasesdiv'>
+        <canvas id='background'>
+            This text is displayed if your browser does not support HTML5 Canvas.
+        </canvas>
+
+        <canvas id='canvas1'>
+            This text is displayed if your browser does not support HTML5 Canvas.
+        </canvas>
+    </div>
+
+    <div id='topMenu'>
+        <h1 id = 'hcov'>>= 1 Sensor: </h1>
+        <h1 id = 'hcovtwo'>>= 2 Sensors </h1>
+        <h1 id = 'hcovfull'>>=4 sensors:</h1>
+        <button id='help' class='button menu1'; onclick='displayHelp();'>Help</button>
+    </div>
+
+    <div id="inputbox">
+        <br>Room W:
+        <input class="input1" id="iprw" type="text" value="25" size="6">
+        <br>Room H:
+        <input class="input1" id="iprh" type="text" value="15" size="6">
+        <br>
+        <br>PIR range:
+        <input class="input1" id="iprpi" type="text" value="39.37" size="6">
+        <br>PIR angle:
+        <input class="input1" id="ipapi" type="text" value="102" size="6">
+        <br>
+        <br>US range:
+        <input class="input1" id="iprus" type="text" value="16.4" size="6">
+        <br>US angle:
+        <input class="input1" id="ipaus" type="text" value="41" size="6">
+        <br>
+        <br>TM range:
+        <input class="input1" id="iprtm" type="text" value="20" size="6">
+        <br>TM angle:
+        <input class="input1" id="ipatm" type="text" value="91.4" size="6">
+        <br>
+        <br>RD range:
+        <input class="input1" id="iprrd" type="text" value="50" size="6">
+        <br>RD angle:
+        <input class="input1" id="ipard" type="text" value="360" size="6">
+        <button id='bapy' class='button menu1'; onclick='redrawSensor("apy")'>Apply</button>
+    </div>
+
+    <div id='leftMenu'>
+        <button id='bpi' class='button menu1'; onclick='redrawSensor("pi")'>PIR</button>
+        <button id='bus' class='button menu1'; onclick='redrawSensor("us")'>Ultrasonic</button>
+        <button id='btm' class='button menu1'; onclick='redrawSensor("tm")'>Thermal</button>
+        <button id='brd' class='button menu1'; onclick='redrawSensor("rd")'>Radar</button>
+
+    </div>
+
+
+
+    <!-- The Modal -->
+    <div id='helpPop' class='modal'>
+
+        <!-- Modal content -->
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <span class='closehelp'>&times;</span>
+                <h2>Occupancy Sensor Coverage Simulator</h2>
+            </div>
+            <div class='modal-body'>
+                <p>Click inside the white box (test room) to place a sensor.</p>
+                <p>Check or uncheck sensor buttons on the left side</p>
+                <button id="sampleB" class='button menu1'>Sample</button>
+                <p>to change the sensors being used.</p>
+                <p>Coverages will be displayed at the top</p>
+
+                <p>Set individual sensor angle and range in the textbox on the left side</p>
+                <input class="input1" type="text" value="Sample" size="6">
+                <p>When finished setting the range and angle, press the apply button to reload the sensors</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        let background = document.getElementById('background');
+        let canvas1 = document.getElementById('canvas1');
+        let marginR = 0;
+        let marginL = 0;
+        let W = window.innerWidth - marginL - marginR;
+        let H = window.innerHeight;
+        background.width = W;
+        background.height = H;
+
+        canvas1.width = W;
+        canvas1.height = H;
+
+        let ctxbg = background.getContext('2d'); /* layer for background info and grid*/
+        let ctx = canvas1.getContext('2d'); /* layer for trail*/
+
+        let mouseX = 0;
+        let mouseY = 0;
+        let lastX = 0;
+        let lastY = 0;
+        let lastside = 'o';
+
+        let sDX = 200;
+        let sDY = 100;
+
+        let mouseStatusDown = false;
+
+
+        function globalFlag() {
+            this.enablePI = true;
+            this.enableUS = true;
+            this.enableTM = true;
+            this.enableRD = true;
+
+            this.rangePI = 12/0.3048;
+            this.anglePI = 102;
+            this.colorPI = '255, 0, 30';
+
+            this.rangeUS = 5/0.3048;
+            this.angleUS = 20.5*2;
+            this.colorUS = '0, 155, 255';
+
+            this.rangeTM = 20;
+            this.angleTM = 45.7*2;
+            this.colorTM = '255, 160, 0';
+
+            this.rangeRD = 50;
+            this.angleRD = 360;
+            this.colorRD = '105, 235, 105';
+
+        }
+
+
+        function Room(){
+            this.w = 25;
+            this.h = 15;
+
+            this.getWall = function(loc) {
+                if (loc.x < 0 || loc.y < 0 || loc.x > this.w || loc.y > this.h) return 'o';
+                else if (loc.y < (this.h/this.w) * loc.x && loc.y < this.h - (this.h/this.w) * loc.x) return 's';
+                else if (loc.y > (this.h/this.w) * loc.x && loc.y > this.h - (this.h/this.w) * loc.x) return 'n';
+                else if (loc.x < this.w/2) return 'w';
+                else return 'e';
+                return loc;
+            };
+        }
+
+        let room = new Room();
+        let global = new globalFlag();
+        let eps = Math.min((W-200)/room.w, (H-200)/room.h);
+
+        /** translate canvas coordinates to object coordinates
+         @param {object} ctxc - the canvas coordinate
+         @param {int} ctxc.x - the canvas x-coordinate
+         @param {int} ctxc.y - the canvas y-coordinate
+         @return {object}
+         */
+        function canvasToObj(ctxc) {
+            return {x: (ctxc.x-sDX)/eps, y: room.h-(ctxc.y-sDY)/eps};
+        }
+
+        /** translate object coordinates to canvas coordinates
+         @param {object} objc - the object coordinate
+         @param {int} objc.x - the object x-coordinate
+         @param {int} objc.y - the object y-coordinate
+         @return {object}
+         */
+        function objToCanvas(objc) {
+            return {x: sDX+objc.x*eps, y: sDY+(room.h-objc.y)*eps};
+        }
+
+        document.addEventListener('mousedown', function() {
+            mouseStatusDown = true;
+        });
+
+        document.addEventListener('mouseup', function() {
+            mouseStatusDown = false;
+        });
+
+        document.addEventListener('click', mouseClicks);
+        /** get mouseclick position
+         @param {event} event - the event
+         */
+        function mouseClicks(event) {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+            //let aph = ctx.getImageData(mouseX, mouseY, 1, 1).data;
+            //console.log(aph);
+            drawSensorMouse();
+        }
+        document.addEventListener('mousemove', mouseMoves);
+
+        function mouseMoves(event) {
+            if (mouseStatusDown) {
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+                drawSensorMouse();
+            }
+        }
+
+
+
+        document.addEventListener('touchstart', function(e) {
+            mouseX = e.touches[0].clientX;
+            mouseY = e.touches[0].clientY;
+            drawSensorMouse();
+        }, false);
+
+        document.addEventListener('touchend', function(e) {
+            mouseX = e.changedTouches[0].clientX - clientX;
+            mouseY = e.changedTouches[0].clientY - clientY;
+            drawSensorMouse();
+        }, false);
+
+
+        function drawSensorMouse(){
+            let side = room.getWall(canvasToObj({x: mouseX, y:mouseY}));
+            let drawX = mouseX;
+            let drawY = mouseY;
+            if (side == 'o') {
+                drawX = lastX;
+                drawY = lastY;
+                side = lastside;
+            }
+            else {
+                lastX = mouseX;
+                lastY = mouseY;
+                lastside = side;
+            }
+            if (side == 'n') drawSensor(drawX/eps - sDX/eps, room.h, 270);
+            else if (side == 's') drawSensor(drawX/eps - sDX/eps, 0, 90);
+            else if (side == 'w') drawSensor(0, room.h - drawY/eps + sDY/eps, 0);
+            else if (side == 'e') drawSensor(room.w, room.h - drawY/eps + sDY/eps, 180);
+            calculateWhiteAera();
+        }
+
+        let calculateWhiteAera = function() {
+            let startC = objToCanvas({x:0, y:0});
+            let endC = objToCanvas({x:room.w, y:room.h});
+            let bc = 0;
+            let twoc = 0;
+            let fullc = 0;
+            let tc = 0;
+            // 26 for 1 sensor, 70 for 3 sensors, 89 for 4 sensors
+            for (let xp = startC.x; xp < endC.x; xp+=18) {
+                for (let yp = endC.y; yp < startC.y; yp+=18) {
+                    let aph = ctx.getImageData(xp, yp, 1, 1).data[3];
+                    if (aph==0) bc++;
+                    if (aph > 28) twoc++;
+                    if (aph > 85) fullc++;
+                    tc++
+                }
+            }
+            let res = bc/tc;
+            let restwo = Math.max(0, Math.max(0, twoc/tc));
+            let resfull = Math.max(0, Math.max(0, fullc/tc));
+            document.getElementById("hcov").innerText = '>= 1 Sensor: ' + parseFloat(1-res).toFixed(2);
+            document.getElementById("hcovtwo").innerText = '>= 2 Sensors: ' + parseFloat(restwo).toFixed(2);
+            document.getElementById("hcovfull").innerText = '>= 4 Sensors: ' + parseFloat(resfull).toFixed(2);
+            return res;
+        }
+
+        let start = function () {
+            displayHelp();
+            draw();
+        }
+        let draw = function() {
+            drawRoom();
+            refreshUI();
+        }
+
+        let drawRoom = function(){
+            ctxbg.clearRect(0, 0, W, H);
+            ctxbg.beginPath();
+            ctxbg.rect(sDX-1, sDY-1, room.w*eps+2, room.h*eps+2);
+            ctxbg.fillStyle = '#fff';
+            ctxbg.fill();
+            ctxbg.lineWidth = 2;
+            ctxbg.strokeStyle = '#ccc';
+            ctxbg.stroke();
+        }
+
+        let drawSensor = function(sX, sY, direction) {
+            ctx.clearRect(0, 0, W, H);
+            drawRoom();
+            if (global.enablePI) drawBeam(sX, sY, global.anglePI, global.rangePI, direction, global.colorPI);
+            if (global.enableUS) drawBeam(sX, sY, global.angleUS, global.rangeUS, direction, global.colorUS);
+            if (global.enableTM) drawBeam(sX, sY, global.angleTM, global.rangeTM, direction, global.colorTM);
+            if (global.enableRD) drawBeam(sX, sY, global.angleRD, global.rangeRD, direction, global.colorRD);
+
+            ctx.beginPath();
+            let startdraw = objToCanvas({x:sX, y:sY});
+            ctx.arc(startdraw.x, startdraw.y, 0.2*eps,0,2*Math.PI);
+            ctx.strokeStyle = '#111';
+            ctx.fillStyle = '#8dc63f';
+            ctx.fill();
+            ctx.stroke();
+
+            let start = objToCanvas({x:0,y:0});
+            let end = objToCanvas({x:room.w, y:room.h});
+            ctx.clearRect(0, 0, W, end.y);
+            ctx.clearRect(0, start.y, W, H);
+            ctx.clearRect(0, 0, start.x, H);
+            ctx.clearRect(end.x, 0, W, H);
+        }
+
+
+        let drawBeam = function(sX, sY, angle, range, direction, color) {
+            range = range;
+
+            ctx.beginPath();
+            ctx.lineWidth = 1;
+            ctx.strokeStyle = "rgb("+color+")";
+
+
+            let startdraw = objToCanvas({x:sX, y:sY});
+            ctx.moveTo(startdraw.x,startdraw.y);
+            ctx.arc(startdraw.x,startdraw.y,range*eps, (-direction-angle/2)*Math.PI/180, (-direction+angle/2)*Math.PI/180);
+            ctx.lineTo(startdraw.x,startdraw.y);
+            ctx.stroke();
+            ctx.fillStyle = "rgba("+color+", 0.1)";
+            ctx.fill();
+
+        }
+
+        let redrawSensor = function(sr) {
+            if (sr == 'pi') global.enablePI = !global.enablePI;
+            if (sr == 'us') global.enableUS = !global.enableUS;
+            if (sr == 'tm') global.enableTM = !global.enableTM;
+            if (sr == 'rd') global.enableRD = !global.enableRD;
+            if (sr == 'apy') {
+                room.w = parseFloat(document.getElementById("iprw").value);
+                room.h = parseFloat(document.getElementById("iprh").value);
+                global.rangePI = parseFloat(document.getElementById("iprpi").value);
+                global.anglePI = parseFloat(document.getElementById("ipapi").value);
+                global.rangeUS = parseFloat(document.getElementById("iprus").value);
+                global.angleUS = parseFloat(document.getElementById("ipaus").value);
+                global.rangeTM = parseFloat(document.getElementById("iprtm").value);
+                global.angleTM = parseFloat(document.getElementById("ipatm").value);
+                global.rangeRD = parseFloat(document.getElementById("iprrd").value);
+                global.angleRD = parseFloat(document.getElementById("ipard").value);
+            }
+            refreshUI();
+            drawSensorMouse();
+            refreshUI();
+        }
+
+
+        let refreshUI = function() {
+            if (global.enablePI) document.getElementById("bpi").style.boxShadow = "0px 0px 0px 3px rgba("+global.colorPI+", 0.7)";
+            else document.getElementById("bpi").style.boxShadow = "0px 0px 0px 3px rgba(50,50,50,0.75)";
+            if (global.enableUS) document.getElementById("bus").style.boxShadow = "0px 0px 0px 3px rgba("+global.colorUS+", 0.7)";
+            else document.getElementById("bus").style.boxShadow = "0px 0px 0px 3px rgba(50,50,50,0.75)";
+            if (global.enableTM) document.getElementById("btm").style.boxShadow = "0px 0px 0px 3px rgba("+global.colorTM+", 0.7)";
+            else document.getElementById("btm").style.boxShadow = "0px 0px 0px 3px rgba(50,50,50,0.75)";
+            if (global.enableRD) document.getElementById("brd").style.boxShadow = "0px 0px 0px 3px rgba("+global.colorRD+", 0.7)";
+            else  document.getElementById("brd").style.boxShadow = "0px 0px 0px 3px rgba(50,50,50,0.75)";
+        }
+
+        // Get the modal
+        let modal = document.getElementById('helpPop');
+        let span = document.getElementsByClassName('closehelp')[0];
+
+        let displayHelp = function() {
+            modal.style.display = 'block';
+        };
+        span.onclick = function() {
+            modal.style.display = 'none';
+        };
+    </script>
+
+</div>
+</body>
+</html>

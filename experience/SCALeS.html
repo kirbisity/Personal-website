@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Yanlin Zhu</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Personal Website">
+    <meta name="keywords" content="yanlin zhu" />
+    <meta name="author" content="yanlin zhu" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" href="../images/favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+</head>
+
+<body>
+    <div id="topMenuMain" class="topMenu">
+        <div id="headline">
+            <a id="featured" class="button topnav"; title="Most Recent Projects"; href="../index.html#intro-content";>Featured</a>
+            <a id="about" class="button topnav"; title="About Me"; href="../index.html#aboutme";>About</a>
+            <a id="experience" class="button topnav"; title="Experience and Internship"; href="../index.html#experienceList";>Experience</a>
+            <a id="projects" class="button topnav"; title="My Projects"; href="../index.html#projectList";>Projects</a>
+        </div>
+        <a id="topmenushow" class="button topnav navmenu"; onclick="showTopNav()" title="Show menu";>&#9776</a>
+    </div>
+
+    <img class="detail-image-back" src="../images/project-experience/scales-spam-0.JPG" width="100%" alt="">
+
+    <div class="detail-overlay"></div>
+
+
+
+
+
+    <section class="detail-content">
+        <div class="detail-content-text">
+            <h1>Smart Contracts Augmented with Learning and Semantics (SCALeS)</h1>
+            <h2>Built decentralized voting platforms in both Hyperledger Composer and Hyperledger Fabric. Using voting mechanisms to handle exceptions in other smart contracts.</h2>
+            <br>
+            <h3>Decentralized Voting</h3>
+            <p>Built an a voting platform where a user can setup a poll and invite other users to vote.</p>
+            <ul>
+                <li>A group of friends use voting to decide what to do over the weekend.</li>
+                <li>A professor gives a quiz to students in the form of a poll.</li>
+                <li>A company makes a decision via poll.</li>
+            </ul>
+            <p>A user starts a poll by inviting voters and sending them Votetokens, which carries the details of the vote, and an expire time set by the host. The voters can vote before the deadline. To vote, the voter then send the Votetoken back along with his answer.</p>
+            <p>When users vote, the answers are encrypted using RSA method. The secret key of this poll will be revealed once the poll ends, so the peers on the network can conclude the result.</p>
+
+            <br>
+            <h3>Spam detection in Decentralized Review</h3>
+            <p>Worked in a team of three, developed a spam detection feature for decentralized reviewing platform. Did the naive bayes classifier part and integrated the decentralized voting into the solution.</p>
+            <p>When a review is submitted, it will be checked by duplicate detection and classification algorithms. If a review is identified as spam, the reviewer can ask the system to re-evaluate his review by real humans. The result of the vote by real users will be final and will subsequently be used as training data to improve the accuracy of our algorithm.</p>
+            <img class="detail-image-mid" src="../images/project-experience/scales-spam-1.JPG" alt="scales-spam-1.JPG">
+            <br><br>
+            <p>For the classification part. Ideally we want a selection of algorithms to run in parallel and vote for the result, with the hope of getting a more accurate result than any single one of them. For now, we’ve implemented naive bayes for the classification part for its simplicity and the relative accuracy to its runtime.</p>
+            <a href="../wikirby/naivebayesdemo/index.html">Naive Bayes Demo</a>
+            <p>We will classify a review as spam if it is many times more likely to be spam then non-spam given a set of features, assuming they are conditionally independent. Here instead of selecting the most likely category calculated by naive bayes, we provide a desired-category and threshold. Threshold filters out less confident predictions by the classifier.</p>
+            <img class="detail-image-mid" src="../images/project-experience/scales-spam-2.JPG" alt="scales-spam-2.JPG">
+            <h4>Testing result in demo, normal and filtered</h4>
+            <br>
+            <img class="detail-image-mid" src="../images/project-experience/scales-spam-3.JPG" alt="scales-spam-3.JPG">
+            <h4>A review blocked as spam on Hyperledger Composer</h4>
+            <br><br>
+
+            <h3>Enabling Customer Service in Decentralized Applications</h3>
+            <h2>Developed an account recovery scheme for Dapps which uses
+                voting by previous transaction partners to verify the ownership, where the votes
+                are asymmetric encrypted</h2>
+            <p>In a decentralized application(DApp), the users are responsible for keeping exclusive control of their key.
+                Having no trusted central management mechanism, there is
+                nothing the decentralized system can do once the key is
+                lost. We propose a method to enable
+                to enable retrieval of lost account in DApps by enforcing an
+                arbitration process governed by majority opinion of the users</p>
+
+            <p>Our methodology involves a voting system to act as the authority to judge whether a user is the
+                truthful owner of the original account. To recover a lost account, the user would set
+                up a new account and claim the ownership of another account
+                by providing evidence that proves their ownership of the lost
+                account. The privacy sensitive evidence provided has a version
+                for each voter encrypted with the voter’s public key. The set of
+                all previous transaction partners, who are supposed to know the
+                information provided, will act as the voting group to verify the
+                evidence. If the transaction partners vote in favor of the request,
+                the lost account will be recovered and restored for the user who
+                submitted the request.</p>
+
+            <button id="scalesPaperBtn" class="button linka"; onclick="openlink(linkscalespaper)">Unpublished Paper</button>
+
+
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <section id="footer">
+        <button id="linklink" class="button link"; title="Linkedin"; onclick="openlink(linklinkedin)"><img src="../images/linklink.png" alt="Linkedin"></button>
+        <div id="footerText">
+            <p>Designed and built by Yanlin Zhu 2018</p>
+        </div>
+        <table id = "footerpc" class = "footer-table" width="100%">
+            <tr>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Web</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td width="1000px">zhuy11@rpi.edu</td>
+                <td width="1000px">+1 (518)-248-9714</td>
+                <td width="1000px"><a href="http://www.yanlinz.com">www.yanlinz.com</a></td>
+                <td width="1000px">Troy, NY, USA</td>
+            </tr>
+            <tr>
+                <td width="1000px">zhuyanlin1996@163.com</td>
+                <td width="1000px">+86 15921835029</td>
+                <td width="1000px"><a onclick="openlink(linkgithub)">github.com/kirbisity</a></td>
+                <td width="1000px">Shanghai, China</td>
+            </tr>
+            <tr>
+                <td width="1000px">staraliform@gmail.com</td>
+                <td width="1000px"></td>
+                <td width="1000px"><a onclick="openlink(linklinkedin)">linkedin.com/in/zhu-yanlin</a></td>
+                <td width="1000px"></td>
+            </tr>
+        </table>
+
+        <table id = "footermb0" class = "footer-table" width="100%">
+            <tr>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            <tr>
+                <td width="1000px">zhuy11@rpi.edu</td>
+                <td width="1000px">+1 (518)-248-9714</td>
+            </tr>
+            <tr>
+                <td width="1000px">zhuyanlin1996@163.com</td>
+                <td width="1000px">+86 15921835029</td>
+            </tr>
+            <tr>
+                <td width="1000px">staraliform@gmail.com</td>
+                <td width="1000px"></td>
+            </tr>
+        </table>
+        <table id = "footermb1" class = "footer-table" width="100%">
+            <tr>
+                <th>Web</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td width="1000px"><a href="http://www.yanlinz.com">www.yanlinz.com</a></td>
+                <td width="1000px">Troy, NY, USA</td>
+            </tr>
+            <tr>
+                <td width="1000px"><a onclick="openlink(linkgithub)">github.com/kirbisity</a></td>
+                <td width="1000px">Shanghai, China</td>
+            </tr>
+            <tr>
+                <td width="1000px"><a onclick="openlink(linklinkedin)">linkedin.com/in/zhu-yanlin</a></td>
+                <td width="1000px"></td>
+            </tr>
+        </table>
+    </section>
+
+
+
+
+    <script src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../js/main.js"></script>
+    <script type="text/javascript" src="../js/detail-script.js"></script>
+
+    <script>
+
+    </script>
+</body>
+</html>

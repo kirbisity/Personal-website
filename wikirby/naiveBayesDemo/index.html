@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Naive bayes</title>
+	<style type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Cousine" rel="stylesheet">
+		html {
+		    font-size: 100%;
+		    -webkit-text-size-adjust: 100%;
+		    -ms-text-size-adjust: 100%;
+		}
+		body {
+		    color: #333333;
+		    -webkit-font-smoothing: antialiased;
+			background: #eee;
+			background-repeat: repeat;
+		    font-size: 16px !important;
+		    font-family: 'Cousine', monospace; !important;
+		}
+		.input1, textarea{
+			color: #454545;
+			padding: 3px;
+			font-size: 14px;
+		}
+		.input1:focus, textarea:focus{
+			background-color: #fffdd1;
+		}
+		.input1:focus, textarea:focus, .input3:focus{
+			outline: none;
+		}
+		.input2{
+			padding: 3px;
+			font-size: 18px;
+		}
+
+		.input3{
+			fon t-size: 16px;
+			background: transparent;
+			border: none
+		}
+		
+	</style>
+	<script src="naive_bayes.js"></script>
+	<script type="text/javascript" src="trainingdata.js"></script>
+	<script type="text/javascript" src="testingdata.js"></script>
+	<script type="text/javascript" src="reviewerParser.js"></script>
+
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<script>
+		console.log('startnb');
+
+		function clear(){
+			classifier = new Naivebayes('Review');
+			//classifier2 = new Naivebayes('Reviewer');
+			//let user1 = new reviewerObject();
+			//user1.username = 'kirby';
+			//user1.city = 'wakanda'
+			//console.log(user1.toJson());
+			//classifier2.learn(user1.toJson(), 'good');
+			//console.log(classifier2);
+
+		}
+
+
+		function nbTrain(){
+			let text = document.nbtest.plaintext1.value;
+			let category = document.nbtest.plaintext2.value;
+			classifier.learn(text, category);
+
+		}
+		function nbCategorize(){
+			let text = document.nbtest.plaintext3.value;
+			let result = classifier.categorize(text,0, 0, true);
+			console.log(result);
+			document.nbtest.status.value = result;
+			//classifier.learn('amazing, awesome movie!! Yeah!! Oh boy.', 'positive')
+		}
+
+		function nbToJSON(){
+			let stateJson = classifier.toJson();
+			document.nbtest.savejsonstring.value = stateJson;
+			console.log(classifier);
+			document.nbtest.classsize.value = classifier.getSize();
+		}
+
+		function nbFromJSON(){
+			let jsonstr = document.nbtest.loadjsonstring.value;
+
+			try {
+			    classifier = classifier.fromJson(jsonstr);
+			} catch (e) {
+			    alert('ERROR: Naivebayes.fromJson expects a valid JSON string.');
+			}
+			console.log(classifier);
+		}
+
+
+		function nbTestTrain(){
+			//classifier = new Naivebayes();
+			for (let i = 0; i < trainingdata.length; i++){
+				console.log(trainingdata[i].Category);
+				classifier.learn(trainingdata[i].Text, trainingdata[i].Category);
+			}
+			document.nbtest.ttrainsz.value = trainingdata.length;
+		}
+
+
+		
+		function nbTestWithThreshold(catP, trsh){
+			let trueP = 0;
+			let falseP = 0;
+			let trueN = 0;
+			let falseN = 0;
+			for (let i=0; i<testingdata.length; i++){
+				let res = classifier.categorize(testingdata[i].Text, catP, trsh);
+				if (res == catP){
+					if (testingdata[i].Category == catP) {
+						trueP += 1;
+					}
+					else {
+						falseP += 1;
+					}
+				} else {
+					if (testingdata[i].Category == catP) {
+						falseN += 1;
+					}
+					else {
+						trueN += 1;
+					}
+				}
+			}
+			return [trueP, falseP, trueN, falseN];
+		}
+
+
+		function nbTestCategorize(limited){
+		    let result = '';
+		    let catP = document.nbtest.plaintextPC.value;
+			let catN = document.nbtest.plaintextNC.value;
+			let trsh = 1;
+			if (limited) {
+				trsh = document.nbtest.plaintext5.value;
+			}
+			if (trsh < 1){
+				alert('Threshold must be larger than 1');
+				return;
+			}
+				
+			let res = nbTestWithThreshold(catP, trsh);
+
+			let rTP = res[0];
+			let rFP = res[1];
+			let rTN = res[2];
+			let rFN = res[3];
+			
+			let rAC = (rTP+rTN)/(rTP+rFP+rFN+rTN);
+			let rPC = rTP/(rTP+rFP);
+			let rRC = rTP/(rTP+rFN);
+			let rFS = 2*(rRC * rPC) / (rRC + rPC)
+			
+			console.log('test end');
+			document.nbtest.ttestsz.value = testingdata.length;
+			document.nbtest.nbTP.value = rTP;
+			document.nbtest.nbFP.value = rFP;
+			document.nbtest.nbTN.value = rTN;
+			document.nbtest.nbFN.value = rFN;
+			
+			document.nbtest.nbAC.value = rAC;
+			document.nbtest.nbPC.value = rPC;
+			document.nbtest.nbRC.value = rRC;
+			document.nbtest.nbFS.value = rFS;
+		}
+
+
+		function drawChart(){
+			let step = 1;
+			let listx = [];
+			let listy0 = [];
+			let listy1 = [];
+			let listy2 = [];
+			let listy3 = [];
+			let expn = document.nbtest.plaintexttexp.value;
+			for (let i = 0; i < expn/step; i++){
+				listx.push(i*step);
+				let catP = document.nbtest.plaintextPC.value;
+				let catN = document.nbtest.plaintextNC.value;
+				let res = nbTestWithThreshold(catP, Math.exp(i*step));
+
+				let rTP = res[0];
+				let rFP = res[1];
+				let rTN = res[2];
+				let rFN = res[3];
+				
+				let rAC = (rTP+rTN)/(rTP+rFP+rFN+rTN);
+				let rPC = rTP/(rTP+rFP);
+				let rRC = rTP/(rTP+rFN);
+				let rFS = 2*(rRC * rPC) / (rRC + rPC)
+				
+				
+				listy0.push(100*rAC);
+				listy1.push(100*rPC);
+				listy2.push(100*rRC);
+				listy3.push(100*rFS);
+
+			}
+
+			var trace0 = {
+			  x: listx,
+			  y: listy0,
+			  type: 'scatter',
+			  name: '% Accuracy'
+			};
+			var trace1 = {
+			  x: listx,
+			  y: listy1,
+			  type: 'scatter',
+			  name: '% Precision'
+			};
+			var trace2 = {
+			  x: listx,
+			  y: listy2,
+			  type: 'scatter',
+			  name: '% Recall'
+			};
+			var trace3 = {
+			  x: listx,
+			  y: listy3,
+			  type: 'scatter',
+			  name: '% F-score'
+			};
+
+			var layout = {
+			  title: 'Performance',
+			  xaxis: {
+			    title: 'Threshold in exp',
+			    showgrid: false,
+			    zeroline: false
+			  },
+			  yaxis: {
+			    title: 'Percent',
+			    showline: false
+			  }
+			};
+
+			var data = [trace0, trace1, trace2, trace3];
+			Plotly.newPlot('plot1', data, layout);
+		}
+
+	</script>
+</head>
+<body onload="clear()">
+<h1>Naive Bayes</h1>
+
+<form name="nbtest" onSubmit='nbTrain();return false;'>
+	Trainning text:<br>
+	<input class="input1" name="plaintext1" type="text" value="Trainning data" size="40">
+	<input class="input1" name="plaintext2" type="text" value="Category" size="14">
+	<input class="input2" type="button" value="learn" onClick="nbTrain();">
+    
+    <br><br>
+	Test text:<br>
+    <input class="input1" name="plaintext3" type="text" value="testing" size="40">
+	<input class="input2" type="button" value="categorize" onClick="nbCategorize();">
+	<p>
+		Test result:
+		<input class="input3" name="status" type="text" size="40">
+	<br><br>
+	
+	<p>
+		Save Classifier to JSON string:<br>
+		<textarea id="savejsonstring" name="savejsonstring" rows="3" cols="70"></textarea>
+	<br>
+	Classifier size:
+	<input class="input3" name="classsize" type="text" size="40">
+	<br>
+	<input class="input2" type="button" value="Classifier -> JSON" onClick="nbToJSON();">
+	<br>
+	<p>
+		Load Classifier from JSON string:<br>
+		<textarea id="loadjsonstring" name="loadjsonstring" rows="3" cols="70"></textarea>
+	<br>
+	<input class="input2" type="button" value="JSON -> Classifier" onClick="nbFromJSON();">
+
+<br><br>
+<h1>Test Naive Bayes Model</h1>
+
+<form name="nbtune" onSubmit='nbTestTrain();return false;'>
+	Train from file:<br>
+	<input class="input2" type="button" value="Train" onClick="nbTestTrain();">
+    <br><br>
+	Run through testing data:<br>
+	<input class="input2" type="button" value="Test" onClick="nbTestCategorize(0);">
+	<br><br>
+	Run through testing data:<br>
+	<br>Positive class:
+	<input class="input1" name="plaintextPC" type="text" value="spam" size="14">
+	<br>Negative class:
+	<input class="input1" name="plaintextNC" type="text" value="ham" size="14">
+	<br>Threshold:
+	<input class="input1" name="plaintext5" type="text" value="1" size="14">
+	<input class="input2" type="button" value="Test" onClick="nbTestCategorize(1);">
+	<p>
+		Test result
+		<br>Training size:
+		<input class="input3" name="ttrainsz" type="text" size="40">
+		<br>
+		<br>Testing size :
+		<input class="input3" name="ttestsz" type="text" size="40">
+		<br>True&nbsp positive:
+		<input class="input3" name="nbTP" type="text" size="40">
+		<br>True&nbsp negative:
+		<input class="input3" name="nbTN" type="text" size="40">
+		<br>False positive:
+		<input class="input3" name="nbFP" type="text" size="40">
+		<br>False negative:
+		<input class="input3" name="nbFN" type="text" size="40">
+		
+		<br>
+		<br>&nbspAccuracy:
+		<input class="input3" name="nbAC" type="text" size="40">
+		<br>Precision:
+		<input class="input3" name="nbPC" type="text" size="40">
+		<br>&nbsp&nbsp Recall:
+		<input class="input3" name="nbRC" type="text" size="40">
+		<br>&nbsp F-score:
+		<input class="input3" name="nbFS" type="text" size="40">
+	<br><br>
+	Run through testing data with threshold from 1 to e^
+	<input class="input1" name="plaintexttexp" type="text" value="10" size="2">
+	<br>
+	<input class="input2" type="button" value="Draw" onClick="drawChart()">
+	<br><br>
+	<div id="plot1" style="width:1000px;height:500px;"></div>
+
+</body>
+</html>

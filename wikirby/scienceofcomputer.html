@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yanlin Zhu</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Personal Website">
+	<meta name="keywords" content="yanlin zhu" />
+	<meta name="author" content="yanlin zhu" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<link rel="icon" href="images/favicon.png">
+</head>
+<body>
+	
+	<div id="topMenu">
+		<div class="headline">Yanlin Zhu</a></div>
+		<button id="totop" class="button topnav"; title="Back To Top"; onclick="document.getElementById('menuList').scrollIntoView();">Index</button>
+	</div>
+	
+	
+	<section id="menuList" class="displayList">
+		<h1>Index</h1>
+		<table>
+		  <tr>
+		  	<th>基础	</th>
+			<th>算法</th>
+			<th>网络</th>
+		  </tr>
+		  <tr>
+			<td onclick="document.getElementById('Agile').scrollIntoView();">Agile</td>
+			<td></td>
+			<td onclick="document.getElementById('HTTP').scrollIntoView();">HTTP 和 HTTPS</td>
+		  </tr>
+		  <tr>
+			<td></td>
+			<td></td>
+			<td onclick="document.getElementById('TCPUDP').scrollIntoView();">TCP 和 UDP</td>
+		  </tr>
+		  <tr>
+			<td></td>
+			<td></td>
+			<td onclick="document.getElementById('css1').scrollIntoView();">CSS</td>
+		  </tr>
+		  <tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		  </tr>
+		</table>
+
+		<table>
+		  <tr>
+		  	<th>C++</th>
+			<th>Python</th>
+			<th>Java</th>
+		  </tr>
+		  <tr>
+			<td onclick="document.getElementById('ctype').scrollIntoView();">数据类型与format</td>
+			<td></td>
+			<td></td>
+		  </tr>
+		  <tr>
+			<td onclick="document.getElementById('const').scrollIntoView();">const 常量</td>
+			<td></td>
+			<td></td>
+		  </tr>
+		  <tr>
+			<td onclick="document.getElementById('ccompile').scrollIntoView();">编译相关</td>
+			<td></td>
+			<td></td>
+		  </tr>
+		  <tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		  </tr>
+		</table>
+
+		<table>
+		  <tr>
+		  	<th>Database</th>
+			<th>AI</th>
+			<th></th>
+		  </tr>
+		  <tr>
+			<td onclick="document.getElementById('relationalalgebra').scrollIntoView();">Relational Algebra</td>
+			<td></td>
+			<td></td>
+		  </tr>
+		</table>
+	</section>
+	
+
+	<section id="Agile" class="displayList yellowList">
+		<h1>Agile</h1>
+		<div class="oneItem">
+			<h2>Agile价值观</h2>
+			<p>Individuals and Interactions 个体和互动：高于流程和工具</p>
+			<p>Working Software 工作的软件：高于详尽的文档</p>
+			<p>Customer Collaboration 客户合作：高于合同谈判</p>
+			<p>Responding to Change 响应变化：高于遵循计划</p>
+		</div>
+		<div class="oneItem">
+			<h2>Agile优点</h2>
+			<p>将大型工作细分</p>
+			<p>高效率的面对面沟通</p>
+			<p>非常短的反馈回路和适应周期</p>
+			<p></p>
+		</div>
+	</section>
+	
+	<section id="HTTP" class="displayList yellowList">
+		<h1>HTTP</h1>
+		<div class="oneItem">
+			<h2>什么是 HTTPS?</h2>
+			<p> HTTPS (基于安全套接字层的超文本传输协议	 或者是 HTTP over SSL) 是一个 Netscape 开发的 Web 协议。</p>
+			<p> HTTPS = HTTP + SSL </p>
+			<p> HTTPS 在 HTTP 应用层的基础上使用安全套接字层作为子层。</p>
+			<p> 一般意义上的https, 就是 server 有一个证书。</p>
+		</div>
+		<div class="oneItem">
+			<h2>为什么需要 HTTPS</h2>
+			<p> 
+				HTTP 使用请求/响应的过程，所以信息可在服务器间快速、轻松而且精确的进行传输。但 HTTP 是不安全的，可以轻松对窃听你跟 Web 服务器之间的数据传输。为了防止未经授权的访问，网景公司(Netscape)推出了HTTPS，也就是基于安全套接字层的 HTTP 协议。
+			</p>
+		</div>
+		<div class="oneItem">
+			<h2>HTTP 和 HTTPS 的相同点</h2>
+			<p> 大多数情况下，HTTP 和 HTTPS 是相同的，因为都是采用同一个基础的协议。</p>
+			<p> 当服务器接收到请求，它会返回一个状态码以及消息，这个回应可能是请求、或者错误信息。系统使用统一资源定位器 URI 模式，因此资源可以被唯一指定。</p>
+		</div>
+		<div class="oneItem">
+			<h2>HTTP 和 HTTPS 的不同之处</h2>
+			<p> HTTP 的 URL 以 http:// 开头，而 HTTPS 的 URL 以 https:// 开头</p>
+			<p> HTTP 是不安全的，而 HTTPS 是安全的</p>
+			<p> HTTP 标准端口是 80 ，而 HTTPS 的标准端口是 443</p>
+			<p> 在 OSI 网络模型中，HTTP 工作于应用层，而 HTTPS 工作在传输层</p>
+			<p> HTTP 无需加密，而 HTTPS 对传输的数据进行加密</p>
+			<p> HTTP 无需证书，而 HTTPS 需要认证证书</p>						
+		</div>
+		<div class="oneItem">
+			<h2>HTTP 如何工作?</h2>
+			<p> 浏览器打开一个 TCP 连接</p>
+			<p> 浏览器发送 HTTP 请求到服务器端</p>
+			<p> 服务器发送 HTTP 回应信息到浏览器</p>
+			<p>TCP 连接关闭</p>
+		</div>
+		<div class="oneItem">
+			<h2>SSL 如何工作?</h2>
+			<p> 验证服务器端</p>
+			<p> 允许客户端和服务器端选择加密算法和密码，确保双方都支持</p>
+			<p> 验证客户端(optional)</p>
+			<p>使用公钥加密技术来生成共享加密数据</p>
+			<p>创建一个加密的 SSL 连接据</p>
+			<p>基于该 SSL 连接传递 HTTP 请求</p>
+		</div>
+	</section>
+	<section id="TCPUDP" class="displayList brownList">
+		<h1>TCP&UDP</h1>
+		<div class="oneItem">
+			<h2>TCP三次握手过程</h2>
+			<p> 1: 主机A通过向主机B发送一个含有同步序列号的标志位的数据段给主机B ,向主机B请求建立连接,通过这个数据段,
+				主机A告诉主机B两件事:我想要和你通信;你可以用哪个序列号作为起始数据段来回应我.</p>
+			<p> 2: 主机B 收到主机A的请求后,用一个带有确认应答(ACK)和同步序列号(SYN)标志位的数据段响应主机A,也告诉主机A两件事:
+				我已经收到你的请求了,你可以传输数据了;你要用哪个序列号作为起始数据段来回应我</p>
+			<p> 3: 主机A收到这个数据段后,再发送一个确认应答,确认已收到主机B 的数据段:"我已收到回复,我现在要开始传输实际数据了
+				这样3次握手就完成了,主机A和主机B 就可以传输数据了.</p>
+		</div>
+		<div class="oneItem">
+			<h2>TCP建立连接要进行3次握手,而断开连接要进行4次</h2>
+			<p> 1: 当主机A完成数据传输后,将控制位FIN置1,提出停止TCP连接的请求.</p>
+			<p> 2: 主机B收到FIN后对其作出响应,确认这一方向上的TCP连接将关闭,将ACK置1.</p>
+			<p> 3: 由B 端再提出反方向的关闭请求,将FIN置1.</p>
+			<p> 4: 主机A对主机B的请求进行确认,将ACK置1,双方向的关闭结束.</p>
+		</div>
+		<div class="oneItem">
+			<h2>TCP vs UDP</h2>
+			<p> UDP是一个非连接connectionless的协议</p>
+			<p> UDP header 8 bytes, overhead很小. TCP header 20 bytes, overhead 较大</p>
+			<p> 3: 由B 端再提出反方向的关闭请求,将FIN置1.</p>
+			<p> TCP保证数据正确性，UDP可能丢包，TCP保证数据顺序，UDP不保证.</p>
+		</div>
+	</section>
+	
+	<section id="css1" class="displayList yellowList">
+		<h1>CSS</h1>
+		<div class="oneItem">
+			<h2>选择器的优先级</h2>
+			<p> HTML标签属性>id选择器>类选择器>元素选择器</p>
+			<p> 第一等：代表内联样式，如: style=””，权值为1000。</p>
+			<p> 第二等：代表ID选择器，如：#content，权值为100。</p>
+			<p> 第三等：代表类，伪类和属性选择器，如.content，权值为10。</p> 
+			<p> 第四等：代表类型选择器和伪元素选择器，如div p，权值为1。</p>
+		</div>
+	</section>
+
+	<section id="ctype" class="displayList yellowList">
+		<h1>数据类型</h1>
+		<div class="oneItem">
+			<h2>%类型符</h2>
+			 <table>
+			    <tr>
+			  	<th>specifier</th>
+				<th>Output</th>
+			    </tr>
+			    <tr>
+				<td>d 或 i</td>
+				<td>十进制 signed int</td>
+				</tr>
+				<tr>
+				<td>u</td>
+				<td>十进制 unsigned int</td>
+				</tr>
+				<tr>
+				<td>o</td>
+				<td>八进制 unsigned</td>
+				</tr>
+				<tr>
+				<td>x 或 X</td>
+				<td>十六进制 unsigned int，小写或大写</td>
+				</tr>
+				<tr>
+				<td>f 或 F</td>
+				<td>十进制浮点 float，小写或大写</td>
+				</tr>
+				<tr>
+				<td>e 或 E</td>
+				<td>科学记数法 3.9265e+2，小写或大写</td>
+				</tr>
+				<tr>
+				<td>a 或 A</td>
+				<td>十六进制浮点 -0xc.90fep-2，小写或大写</td>
+				</tr>
+				<tr>
+				<td>c</td>
+				<td>Character 字符</td>
+				</tr>
+				<tr>
+				<td>s</td>
+				<td>String of characters 字符串</td>
+				</tr>
+				<tr>
+				<td>p</td>
+				<td>指针地址 b8000000</td>
+				</tr>
+				<tr>
+				<td>h</td>
+				<td>short int</td>
+				</tr>
+				<tr>
+				<td>z</td>
+				<td>size_t</td>
+				</tr>
+				</table>
+		</div>
+		<div class="oneItem">
+			<h2>sizeof类型与类型范围</h2>
+			 <table>
+			    <tr>
+			  	<th>类型</th>
+				<th>大小</th>
+				<th>范围</th>
+			    </tr>
+			    <tr>
+				<td>boolean 布尔</td>
+				<td>1 byte for Visual C++ 5.0 and later</td>
+				<td>false, true</td>
+				</tr>
+				<tr>
+				<td>char</td>
+				<td>1 byte</td>
+				<td>1-128 最大127</td>
+				</tr>
+				<tr>
+				<td>int</td>
+				<td>4 bytes for 32 bit platform</td>
+				<td>-2^31 - 2^31-1</td>
+				</tr>
+				<tr>
+				<td>short int</td>
+				<td>2 bytes</td>
+				<td>-2^16 - 2^16-1</td>
+				</tr>
+				<tr>
+				<td>float</td>
+				<td>4 bytes</td>
+				<td>1.8E-38	- 3.4E+38</td>
+				</tr>
+				<tr>
+				<td>double</td>
+				<td>8 bytes</td>
+				<td>2.2E-308 - 1.8E+308</td>
+				</tr>
+				<tr>
+				<td>long int</td>
+				<td>4 bytes</td>
+				<td>-2^31 - 2^31-1</td>
+				</tr>
+				<tr>
+				<td>long long int</td>
+				<td>8 bytes</td>
+				<td>-2^63 - 2^63-1</td>
+				</tr>
+				</table>
+			<p></p>
+			<p>相应的unsigned int类型sizeof大小不变，最大值*2</p>
+			<p>enum 枚举变量内存大小默认是用int类型来存储的，占4个字节。</p>
+		</div>
+		<div class="oneItem">
+			<h2></h2>
+			<p></p>
+		</div>
+	</section>
+
+	<section id="const" class="displayList yellowList">
+		<h1>const 常量</h1>
+		<div class="oneItem">
+			<h2>const与指针</h2>
+			<p>如果const位于星号的左侧，则const就是用来修饰指针所指向的变量，即指针指向的东西为const</p>
+			<p>&emsp; const int* a = &b;</p><p>&emsp; int const *a = &b;</p>
+			<p>如果const位于星号的右侧，const就是修饰指针本身，即指针本身是const</p>
+			<p>&emsp; int* const a = &b;</p><p>&emsp; const int* const a = &b; </p>
+		</div>
+		<div class="oneItem">
+			<h2>const的initialize初始化</h2>
+			<p>非指针的const常量初始化</p>
+			<p>&emsp; const a a = b;</p>
+			<p>指针的const常量初始化</p>
+			<p>&emsp; const a* c = new a();</p>
+			<p>&emsp; a f; const a& e = f;</p>
+		</div>
+		<div class="oneItem">
+			<h2>const参数</h2>
+			<p>void fun0(const a* a); 不能对传递进来的指针的内容进行改变，保护了原指针所指向的内容</p>
+			<p>void fun1(const a& a); 不能对传递进来的引用对象进行改变，保护了原对象的属性</p>
+			<p>参数const通常用于参数为指针或引用的情况</p>
+		</div>
+		<div class="oneItem">
+			<h2>const返回值</h2>
+			<p>const rational operator*(const rational& lhs, const rational& rhs) 重载*</p>
+			<p>返回值用const修饰可以防止允许这样的操作 (a*b) = c</p>
+			<p>一般用const修饰返回值为对象本身的情况多用于二目操作符重载函数并产生新对象的时候</p>
+		</div>
+		<div class="oneItem">
+			<h2>类成员函数 class functions中const的使用</h2>
+			<p>const 成员函数中不允许对数据成员进行修改，如果修改，编译器将报错，这大大提高了程序的健壮性。</p>
+			<p>void fun() const;</p>
+			<p>静态函数不可以是虚函数</p>
+		</div>
+	</section>
+	
+	<section id="ccompile" class="displayList brownList">
+		<h1>编译相关</h1>
+		<div class="oneItem">
+			<h2>哪些函数是在编译时确定的？</h2>
+			<p>静态函数， inline函数</p>
+			<h2>哪些函数是在运行时确定的？</h2>
+			<p>虚函数</p>
+		</div>
+	</section>
+
+	<section id="relationalalgebra" class="displayList yellowList">
+		<h1>Relational Algebra</h1>
+		<div class="oneItem">
+			<h2>Crucial operators</h2>
+			<p>Union</p>
+			<p>Set difference</p>
+			<p>Selection —— 选出一个relation里所有满足条件的tuples</p>
+			<p>Projection —— 不改变tuples，改变选出的schema(选出其中几个attributes)，因为可能重复tuple数量可能减少</p>
+			<p>Cartesian Product —— 两个relation的元素相乘集合，若R有n tuples，S有m tuples, product会有n*s tuples</p>
+			<p>Renaming —— 修改名字不改变relation内容</p>
+		</div>
+		<div class="oneItem">
+			<h2>Derived operators</h2>
+			<p>Theta join —— 与Cartesian Product相同</p>
+			<p>Natural join</p>
+			<p>Set intersection</p>
+		</div>
+	</section>
+
+	<section id="HTTP" class="displayList yellowList">
+		<h1>HTTP</h1>
+		<div class="oneItem">
+			<h2></h2>
+			<p></p>
+		</div>
+	</section>
+
+	
+	<section id="LINK" class="displayList yellowList">
+		<h1>参考</h1>
+		<div class="oneItem">
+			<h2></h2>
+			<a href="https://blog.csdn.net/whatday/article/details/38147103">https://blog.csdn.net/whatday/article/details/38147103</a>
+			<a href="http://www.cnblogs.com/bizhu/archive/2012/05/12/2497493.html">http://www.cnblogs.com/bizhu/archive/2012/05/12/2497493.html</a>
+			<a href=""></a>
+			<a href=""></a>
+			
+		</div>
+	</section>
+
+	<section id="resumeContainer">
+		<button id="resumeBtn" class="button resume"; onclick="openlink(linkresume)">Get My Resume</button>
+	</section>
+	<section id="footer">
+		<button id="linklink" class="button link"; title="Linkedin"; onclick="openlink(linklinkedin)"><img src="images/linklink.png" alt="Linkedin"></button>
+		<div id="footerText">	
+			<p>Yanlin Zhu 2018</p>
+		</div>
+	</section>
+	
+	<script>
+		let linklinef = "https://www.youtube.com/watch?v=gIF-82xRhpQ)";
+		let linkresume = "data/resume_yanlin_zhu.pdf";
+		let linklinkedin = "https://www.linkedin.com/in/zhu-yanlin/";
+		function openlink(textlink) {
+			window.open(textlink);
+		}
+	</script>
+</body>
+</html>

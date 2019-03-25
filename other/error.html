@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yanlin Zhu</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Personal Website">
+    <meta name="keywords" content="yanlin zhu" />
+    <meta name="author" content="yanlin zhu" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" type="text/css" href="../css/animate.css">
+    <link rel="icon" href="../images/favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+        body {
+            background: #aeaeae !important;
+        }
+    </style>
+
+
+</head>
+<body>
+<div id="preview-index" class="preview-img animated fadeIn"></div>
+<div id="index-mask" class="page-mask animated fadeIn"></div>
+<div id="topMenuMain" class="topMenu">
+    <div id="headline">
+        <a id="featured" class="button topnav"; title="Most Recent Projects"; href="../index.html#intro-content";>Featured</a>
+        <a id="about" class="button topnav"; title="About Me"; href="../index.html#aboutme";>About</a>
+        <a id="experience" class="button topnav"; title="Experience and Internship"; href="../index.html#experienceList";>Experience</a>
+        <a id="projects" class="button topnav"; title="My Projects"; href="../index.html#projectList";>Projects</a>
+    </div>
+    <a id="topmenushow" class="button topnav navmenu"; onclick="showTopNav()" title="Show menu";>&#9776</a>
+</div>
+
+<div id="errorbox">
+    <h1 id="errormes">404</h1>
+    <h2>Page not found</h2>
+</div>
+
+
+
+<script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+<script>
+    pageW = $(window).width();
+    pageH = $(window).height();
+    let diag = Math.sqrt(pageW * pageW + pageH * pageH);
+
+    document.addEventListener('mousemove', mouseMoves);
+    /** get mouseMoves position
+     @param {event} event - the event
+     */
+    function mouseMoves(event) {
+        let mouseX = event.clientX;
+        let mouseY = event.clientY;
+        mouseY += 100;
+        let rect = document.getElementById('errormes').getBoundingClientRect();
+        let errx = (rect.left + rect.right) / 2;
+        let erry = (rect.top + rect.bottom) / 2;
+
+        let shax = errx - mouseX;
+        let shay = erry - mouseY;
+
+        let dist = Math.sqrt(shax * shax + shay * shay);
+        let colortxt = (Math.round(255-dist/diag*80)).toString();
+
+        let shadowtxt = "," + (Math.round(shax/80)).toString() + "px " + (Math.round(shay/80)).toString() + "px " + "10px rgba(0,0,0,.2)," + (Math.round(shax/40)).toString() + "px " + (Math.round(shay/40)).toString() + "px " + "20px rgba(0,0,0,.15)";
+        document.getElementById('errormes').style.textShadow = "0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25)" + shadowtxt;
+        document.getElementById('errormes').style.color = "rgb("+colortxt+","+colortxt+","+colortxt+")";
+    }
+
+    $(window).resize(function() {
+        pageW = $(window).width();
+        pageH = $(window).height();
+        diag = Math.sqrt(pageW * pageW + pageH * pageH);
+    });
+
+</script>
+
+</body>
+</html>

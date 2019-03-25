@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Yanlin Zhu</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Personal Website">
+	<meta name="keywords" content="yanlin zhu" />
+	<meta name="author" content="yanlin zhu" />
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" type="text/css" href="css/animate.css">
+	<link rel="icon" href="images/favicon.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="preview-index" class="preview-img animated fadeIn"></div>
+    <div id="index-mask" class="page-mask animated fadeIn"></div>
+    <div id="pBarL" class="progressBar"></div>
+    <div id="pBarR" class="progressBar"></div>
+	<div id="topMenuMain" class="topMenu">
+        <div id="headline">
+		<a id="featured" class="button topnav"; title="Most Recent Projects"; href="#intro-content";>Featured</a>
+		<a id="about" class="button topnav"; title="About Me"; href="#aboutme";>About</a>
+		<a id="experience" class="button topnav"; title="Experience and Internship"; href="#experienceList";>Experience</a>
+		<a id="projects" class="button topnav"; title="My Projects"; href="#projectList";>Projects</a>
+        </div>
+        <a id="topmenushow" class="button topnav navmenu"; onclick="showTopNav()" title="Show menu";>&#9776</a>
+    </div>
+
+
+	<div id="intro0" class="intro">
+        <div id="intro-overlay">
+            <div id = "g-sun" class = "graphics-element"></div>
+            <div id = "g-cloud0" class = "graphics-element cloud"></div>
+            <div id = "g-cloud1" class = "graphics-element cloud"></div>
+            <div id = "g-cloud2" class = "graphics-element cloud"></div>
+            <div id = "g-cloud3" class = "graphics-element cloud"></div>
+            <div id = "g-cloud4" class = "graphics-element cloud"></div>
+            <div id = "g-cloud5" class = "graphics-element cloud"></div>
+            <div id = "g-cloud6" class = "graphics-element cloud"></div>
+            <div id = "g-cloud7" class = "graphics-element cloud"></div>
+            <div id = "g-cloud8" class = "graphics-element cloud"></div>
+            <div id = "g-cloud9" class = "graphics-element cloud"></div>
+
+            <div id="intro-content">
+                <h1 class="animated fadeInDown">Yanlin Zhu</strong></h1>
+                <p id="indexsubheader" class="subtitle animated fadeInUp">Computer Science & Computer System Engineering</p>
+				<h2 id="featured1" class="subtitle animated fadeInUp">Featured</h2>
+            </div>
+            <div id="project1-container">
+                <a href="experience/CSDT.html" id="project1" class="button projects wp5 animated slideInUp">
+                    ▶ GO
+                </a>
+                <div id="project1info" class = "animated fadeInDown">
+                    SKATEBOARDING is developed for younger students to understand coordinates and mathematics functions. Type in an expression, and track will be generated from the graph of the equation.
+                </div>
+            </div>
+            <div id="project2-container">
+                <a href="experience/SCALes.html" id="project2" class="button projects wp5 animated slideInUp">
+                    ▶ GO
+                </a>
+                <div id="project2info" class = "animated fadeInDown">
+                    Built decentralized voting platforms in both Hyperledger Composer and Hyperledger Fabric. Using voting mechanisms to handle exceptions in other smart contracts.
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+	<div id="aboutme" class="text-center">
+            <div class="animated fadeIn">
+                <h2>Hi! I'm Yanlin</h2>
+                <div id="intro-background"></div>
+                <div id="intro-motion">
+                    <div id="introBGMotion0"></div>
+                    <div id="introBGMotion1"></div>
+                    <div id="introBGMotion2"></div>
+                    <div id="avatar"></div>
+                </div>
+                <p>
+                    I'm currently pursuing Bachelor of Science in Computer Science with a dual major of Computer & Systems Engineering at Rensselaer Polytechnic Institute. Interested in Machine Learning and decentralized applications.
+                    <br>
+                    <br>
+                </p>
+            </div>
+	</div>
+
+
+	<div id="skillList" class="displayList2 animated fadeIn">
+		<h1 id="skill-table-title"></h1>
+        <div id="skill-container">
+            <table id = "skill-large" class = "skill-table" width="100%">
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">C</td>
+                    <td class = "skill-table-td" width="1000px">Python</td>
+                    <td class = "skill-table-td" width="1000px">LogicWorks</td>
+                    <td class = "skill-table-td" width="1000px">Siemens NX</td>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">Go</td>
+                    <td class = "skill-table-td" width="1000px">HTML&CSS</td>
+                    <td class = "skill-table-td" width="1000px">OrCAD</td>
+                    <td class = "skill-table-td" width="1000px">3DSMAX</td>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">C++</td>
+                    <td class = "skill-table-td" width="1000px">Java</td>
+                    <td class = "skill-table-td" width="1000px">LaTeX</td>
+                    <td class = "skill-table-td" width="1000px">Vegas</td>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">JavaScript</td>
+                    <td class = "skill-table-td" width="1000px">Scheme</td>
+                    <td class = "skill-table-td" width="1000px">Hyperledger</td>
+                    <td class = "skill-table-td" width="1000px">Photoshop</td>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px"></td>
+                    <td class = "skill-table-td" width="1000px">Prolog</td>
+                    <td class = "skill-table-td" width="1000px"></td>
+                    <td class = "skill-table-td" width="1000px"></td>
+                </tr>
+            </table>
+
+            <table id = "skill-small" class = "skill-table" width="100%">
+                <tr>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">C</td>
+                    <td class = "skill-table-td" width="1000px">Python</td>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">Go</td>
+                    <td class = "skill-table-td" width="1000px">HTML&CSS</td>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">C++</td>
+                    <td class = "skill-table-td" width="1000px">Java</td>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">JavaScript</td>
+                    <td class = "skill-table-td" width="1000px"></td>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">LogicWorks</td>
+                    <td class = "skill-table-td" width="1000px">Siemens NX</td>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">OrCAD</td>
+                    <td class = "skill-table-td" width="1000px">3DSMAX</td>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">LaTeX</td>
+                    <td class = "skill-table-td" width="1000px">Vegas</td>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">Scheme</td>
+                    <td class = "skill-table-td" width="1000px">Photoshop</td>
+                </tr>
+                <tr>
+                    <td class = "skill-table-td" width="1000px">Prolog</td>
+                    <td class = "skill-table-td" width="1000px">Hyperledger</td>
+                </tr>
+            </table>
+        </div>
+	</div>
+
+
+    <div id="experienceList" class="list-container">
+        <div class="heading-sub text-center">
+            <h1 class="title">Experience</h1>
+            <h2 class="subtitle">Previous paid or volunteer experience</h2>
+        </div>
+
+        <div class="row multi-columns-row">
+
+            <div class="col-md-6">
+                <div class="list-item">
+                    <div class="elem-wrapper">
+                        <i>C</i>
+                    </div>
+                    <div class="content-wrapper">
+                        <h3 class="title-list">Undergraduate Mentor for CSCI-4210 Operating Systems</h3>
+                        <div class="description">
+                            <div class="list-description">
+                                Help students with course materials and debug their homework code in c and Python during help sessions every Wednesday, Thursday and Friday.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="list-item">
+                    <div class="elem-wrapper">
+                        <i>JS</i>
+                    </div>
+                    <div class="content-wrapper">
+                        <a onmouseover="previewpage('url(images/project-experience/scales-pv.JPG)', 1)" onmouseout="previewpage(0)" href = "experience/SCALeS.html"><h3 class="title-list">Researcher for smart contract project at RPI IDEA</h3></a>
+                        <div class="description">
+                            <div class="list-description">
+                                Worked in a team of three, developed spam detection for a review Dapp, wrote the Naive Bayes classifier.
+                                <br>
+                                On Hyperledger, developed an account recovery scheme for Dapps which uses voting by previous transaction partners to verify the ownership, where the votes are asymmetric encrypted.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="list-item">
+                    <div class="elem-wrapper">
+                        <i>JS</i>
+                    </div>
+                    <div class="content-wrapper">
+                        <a onmouseover="previewpage('url(images/project-experience/csdt-pv.JPG)', 1)" onmouseout="previewpage(0)" class="title-list" href = "experience/CSDT.html"><h3 class="title-list">Research Assistant at RPI CSDT</h3></a>
+                        <div class="description">
+                            <div class="list-description">
+                                Developed a single-page web-app Skateboarding in JavaScript for CSDT at RPI from concept to finished program.
+                                Wrote the equation visualizer and physics simulator in JavaScript and the UI in HTML and CSS.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="list-item">
+                    <div class="elem-wrapper">
+                        <i>/</i>
+                    </div>
+                    <div class="content-wrapper">
+                        <h3 class="title-list">Undergraduate Mentor for CSCI-2200 Foundations of Computer Science</h3>
+                        <div class="description">
+                            <div class="list-description">
+                                Helped students to understand course materials during bi-weekly help sessions.
+                                Graded homeworks for a section of 70+ students, helped with quizzes and exams grading.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="list-item">
+                    <div class="elem-wrapper font12">
+                        <i>HTML</i>
+                    </div>
+                    <div class="content-wrapper">
+                        <h3 class="title-list">Intern at SAIC Motor Passenger Vehicle CO</h3>
+                        <div class="description">
+                            <div class="list-description">
+                                Designed the interactive web content about company news and sales performance. Managed Company WeChat Official Account.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="list-item">
+                    <div class="elem-wrapper">
+                        <i>/</i>
+                    </div>
+                    <div class="content-wrapper">
+                        <h3 class="title-list">Intern at AVIC Shanghai Aviation Electric Co., Ltd</h3>
+                        <div class="description">
+                            <div class="list-description">
+                                Organized the data and drawings files using Product Data Management software.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id = "slider" class = "index-slide container">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+                <li data-target="#myCarousel" data-slide-to="3"></li>
+            </ol>
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+
+                <div class="item active">
+                    <div class="img-mask carousel-img" style="background-color: rgba(100, 100, 50, 0.5)"></div>
+                    <img class="d-block slide-image" src="images/1.jpg" alt="slide 1">
+                    <div class="carousel-caption">
+                        <h2>BUGGY</h2>
+                        <h3>A cute, futuristic buggy created with 3DSMAX</h3>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="img-mask carousel-img" style="background-color: rgba(50, 100, 100, 0.5)"></div>
+                    <img class="d-block slide-image" src="images/2.jpg" alt="slide 2">
+                    <div class="carousel-caption">
+                        <h2>Skateboarding</h2>
+                        <h3>A Javascript web app made for CSDT</h3>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="img-mask carousel-img" style="background-color: rgba(60, 130, 60, 0.5)"></div>
+                    <img class="d-block slide-image" src="images/3.jpg" alt="slide 3">
+                    <div class="carousel-caption">
+                        <h2>UV water cleaner</h2>
+                        <h3>Rendering of the water cleaner project for the IED course.</h3>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <div class="img-mask carousel-img" style="background-color: rgba(95, 60, 95, 0.5)"></div>
+                    <img class="d-block slide-image" src="images/4.jpg" alt="slide 4">
+                    <div class="carousel-caption">
+                        <h2>NB Classifier Demo</h2>
+                        <h3>Part of the Spam detection in Decentralized Review</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+
+    <div id="projectList" class="list-container">
+        <div class="heading-sub text-center">
+            <h1 class="title">Projects</h1>
+            <h2 class="subtitle">Previous course or personal projects</h2>
+        </div>
+
+        <div class="row multi-columns-row">
+
+            <div class="col-md-6">
+                <div class="list-item">
+                    <div class="elem-wrapper">
+                        <i>C</i>
+                    </div>
+                    <div class="content-wrapper">
+                        <a onmouseover="previewpage('url(images/project-experience/scales-pv.JPG)', 1)" onmouseout="previewpage(0)" href = "experience/Capstone.html"><h3 class="title-list">Smart Room Lighting - Capstone Project</h3></a>
+                        <div class="description">
+                            <div class="list-description">
+                                The Smart Room Lighting project is to find improved approaches to detecting room occupancy. It is sponsored by Leviton.
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="list-item">
+                    <div class="elem-wrapper">
+                        <i>JS</i>
+                    </div>
+                    <div class="content-wrapper">
+                        <h3 class="title-list">Personal Website – yanlinz.com</h3>
+                        <div class="description">
+                            <div class="list-description">
+                                Designed and developed the website. Wrote the special effects, including the text transformation and the perspective clouds effect in native JavaScript.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="list-item">
+                    <div class="elem-wrapper f16">
+                        <i>Java</i>
+                    </div>
+                    <div class="content-wrapper">
+                        <h3 class="title-list">Physicsapp – Software Design and Doc. Project</h3>
+                        <div class="description">
+                            <div class="list-description">
+                                Worked in a team of four, used Agile methodology throughout the development process, developed an Android app in Java.
+                                Developed the unit converter. Used SQLite to store user favorites and history
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="list-item">
+                    <div class="elem-wrapper">
+                        <i>/</i>
+                    </div>
+                    <div class="content-wrapper">
+                        <h3 class="title-list">UV water cleaner – Introduction to Engineering Design Project</h3>
+                        <div class="description">
+                            <div class="list-description">
+                                Worked in a team of six, developed a UV cleaning device with touchscreen that purifies water. Responsible for design and construction of electronics. Written the controlling program For Arduino. Developed the UI on the 3.5 TFT touchscreen.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="list-item">
+                    <div class="elem-wrapper">
+                        <i>/</i>
+                    </div>
+                    <div class="content-wrapper">
+                        <h3 class="title-list">Linefollower – Introduction to Engineering Design Mini Project</h3>
+                        <div class="description">
+                            <div class="list-description">
+                                Developed a linefollower that follows the black line and can go back and search for a track even if completely missed the track.
+                                <a onclick="openlink(linklinef)">Youtube: Basic line follower using 3 ir sensors</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="list-item">
+                    <div class="elem-wrapper">
+                        <i>C</i>
+                    </div>
+                    <div class="content-wrapper">
+                        <h3 class="title-list">Embedded Control Project – Autonomous RC car</h3>
+                        <div class="description">
+                            <div class="list-description">
+                                Developed the logic for a self-guided model car in Silicon Labs IDE with C language. Dealt with input/output bits for the control board in the program. Worked in a team of three, using the 74-series chipset and wiring the board to control the servers and motor of the car and receive information from the sensors.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="second-background"></div>
+
+
+	<section id="resumeContainer" class="animated fadeIn">
+		<button id="resumeBtn" class="button resume"; onclick="openlink(linkresume)">Get My Resume</button>
+	</section>
+
+
+	<section id="footer">
+		<button id="linklink" class="button link"; title="Linkedin"; onclick="openlink(linklinkedin)"><img src="images/linklink.png" alt="Linkedin"></button>
+		<div id="footerText">
+			<p>Designed and built by Yanlin Zhu 2018</p>
+		</div>
+        <table id = "footerpc" class = "footer-table" width="100%">
+            <tr>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Web</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td width="1000px">zhuy11@rpi.edu</td>
+                <td width="1000px">+1 (518)-248-9714</td>
+                <td width="1000px"><a href="http://www.yanlinz.com">www.yanlinz.com</a></td>
+                <td width="1000px">Troy, NY, USA</td>
+            </tr>
+            <tr>
+                <td width="1000px">zhuyanlin96@gmail.com</td>
+                <td width="1000px"></td>
+                <td width="1000px"><a onclick="openlink(linkgithub)">github.com/kirbisity</a></td>
+                <td width="1000px">Shanghai, China</td>
+            </tr>
+            <tr>
+                <td width="1000px">staraliform@gmail.com</td>
+                <td width="1000px"></td>
+                <td width="1000px"><a onclick="openlink(linklinkedin)">linkedin.com/in/zhu-yanlin</a></td>
+                <td width="1000px"></td>
+            </tr>
+        </table>
+
+        <table id = "footermb0" class = "footer-table" width="100%">
+            <tr>
+                <th>Email</th>
+                <th>Phone</th>
+            </tr>
+            <tr>
+                <td width="1000px">zhuy11@rpi.edu</td>
+                <td width="1000px">+1 (518)-248-9714</td>
+            </tr>
+            <tr>
+                <td width="1000px">zhuyanlin96@gmail.com</td>
+                <td width="1000px"></td>
+            </tr>
+            <tr>
+                <td width="1000px">staraliform@gmail.com</td>
+                <td width="1000px"></td>
+            </tr>
+        </table>
+        <table id = "footermb1" class = "footer-table" width="100%">
+            <tr>
+                <th>Web</th>
+                <th>Location</th>
+            </tr>
+            <tr>
+                <td width="1000px"><a href="http://www.yanlinz.com">www.yanlinz.com</a></td>
+                <td width="1000px">Troy, NY, USA</td>
+            </tr>
+            <tr>
+                <td width="1000px"><a onclick="openlink(linkgithub)">github.com/kirbisity</a></td>
+                <td width="1000px">Shanghai, China</td>
+            </tr>
+            <tr>
+                <td width="1000px"><a onclick="openlink(linklinkedin)">linkedin.com/in/zhu-yanlin</a></td>
+                <td width="1000px"></td>
+            </tr>
+        </table>
+	</section>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/skill_bubbles.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/index-script.js"></script>
+
+</body>
+</html>
